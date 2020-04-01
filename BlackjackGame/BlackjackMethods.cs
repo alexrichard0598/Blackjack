@@ -202,5 +202,43 @@ namespace BlackjackGame
 
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// Set up the deck using 3 standard decks,
+        /// and shuffles the deck 7 times
+        /// </summary>
+        /// <param name="numDecks">The number of decks to make combine</param>
+        /// <returns>The new deck appropriately shuffled</returns>
+        public static Deck SetupDeck(int numDecks)
+        {
+            Deck deck = MakeBlackjackDeck(3);
+
+            //Shuffle the deck 7 times which is the optimal number of times to shuffle.
+            //Source: https://youtu.be/AxJubaijQbI
+            for (int i = 0; i < 7; i++)
+            {
+                deck.Shuffle();
+            }
+
+            return deck;
+        }
+
+        /// <summary>
+        /// Creates a Blackjack deck from the number of regular decks specified
+        /// </summary>
+        /// <param name="numDecks">The number of decks to use</param>
+        public static Deck MakeBlackjackDeck(int numDecks)
+        {
+            List<Card> newDeck = new List<Card>();
+            for (int i = 0; i < numDecks; i++)
+            {
+                Deck baseDeck = new Deck();
+                for (int x = 0; x < 52; x++)
+                {
+                    newDeck.Add(baseDeck.DrawOneCard());
+                }
+            }
+            return new Deck(newDeck);
+        }
     }
 }

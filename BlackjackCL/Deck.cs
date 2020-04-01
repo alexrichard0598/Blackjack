@@ -14,21 +14,9 @@ namespace BlackjackCL
         {
             MakeDeck();
         }
-
-        /// <summary>
-        /// Creates a Blackjack deck from the number of regular decks specified
-        /// </summary>
-        /// <param name="numDecks">The number of decks to use</param>
-        public Deck(int numDecks)
+        public Deck(List<Card> cards)
         {
-            for (int i = 0; i < numDecks; i++)
-            {
-                Deck baseDeck = new Deck();
-                for (int x = 0; x < 52; x++)
-                {
-                    deck.Add(baseDeck.DrawOneCard());
-                }
-            }
+            deck.AddRange(cards);
         }
 
         /// <summary>
