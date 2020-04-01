@@ -9,7 +9,6 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("audio/losesound.wav")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("audio/prompt.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("audio/winsound.wav")]
 
 

@@ -67,13 +67,13 @@ namespace BlackjackGame
             dealerFullHand.Add(holeCard);
 
             //If the player has Blackjack end the game.
-            if (playerHand.HandValue() == 21)
+            if (HandValue(playerHand) == 21)
             {
                 EndGame();
             }
 
             //If the dealer has blackjack end the game.
-            if (dealerFullHand.HandValue() == 21)
+            if (HandValue(dealerFullHand) == 21)
             {
                 hasDealerStand = true;
                 EndGame();
@@ -104,7 +104,7 @@ namespace BlackjackGame
             DisplayCards();
             System.Windows.Application.Current.Dispatcher.Invoke(delegate
             {
-                lblDealerValue.Content = dealerFullHand.HandValue().ToString();
+                lblDealerValue.Content = HandValue(dealerFullHand).ToString();
             });
         }
 
@@ -120,7 +120,7 @@ namespace BlackjackGame
             DisplayCards();
 
             //Update the value of the players hand
-            int playerHandValue = playerHand.HandValue();
+            int playerHandValue = HandValue(playerHand);
             System.Windows.Application.Current.Dispatcher.Invoke(delegate
             {
                 lblHandValue.Content = playerHandValue.ToString();
@@ -140,16 +140,16 @@ namespace BlackjackGame
         {
             //If the dealers hand is less and seventeen or 
             //the dealer has a soft seventeen deal the dealer a card
-            bool dealerLessThanPlayer = dealerFullHand.HandValue() < playerHand.HandValue();
+            bool dealerLessThanPlayer = HandValue(dealerFullHand) < HandValue(playerHand);
 
-            if (dealerFullHand.IsSoftSeventeen() && dealerLessThanPlayer || dealerFullHand.HandValue() < 17 && dealerLessThanPlayer)
+            if (IsSoftSeventeen(dealerFullHand) && dealerLessThanPlayer || HandValue(dealerFullHand) < 17 && dealerLessThanPlayer)
             {
                 Card card = deck.DrawOneCard();
                 dealerHand.Add(card);
                 dealerFullHand.Add(card);
                 System.Windows.Application.Current.Dispatcher.Invoke(delegate
                 {
-                    lblDealerValue.Content = dealerFullHand.HandValue().ToString();
+                    lblDealerValue.Content = HandValue(dealerFullHand).ToString();
                 });
             }
             else //Dealser stands
@@ -251,7 +251,11 @@ namespace BlackjackGame
 
         }
 
-        private bool UnknownWinner() { return !hasDealerStand && !(playerHand.HandValue() > 21) && playerHand.HandValue() != 21; }
+        /// <summary>
+        /// Whether dealer is still uncertain or not
+        /// </summary>
+        /// <returns></returns>
+        private bool UnknownWinner() { return !hasDealerStand && !(HandValue(playerHand) > 21) && HandValue(playerHand) != 21; }
 
         /// <summary>
         /// When the game is over
@@ -285,37 +289,37 @@ namespace BlackjackGame
                 //or the dealer has gone bust and the 
                 //player has not gone bust he wins. 
                 //Otherwise the player looses.
-                if (playerHand.HandValue() == 21)
+                if (HandValue(playerHand) == 21)
                 {
                     PlaySound(Sound.Win);
                     MessageBox.Show("Blackjack!", "You win!");
                 }
-                else if (playerHand.HandValue() > 21)
+                else if (HandValue(playerHand) > 21)
                 {
                     PlaySound(Sound.Lose);
                     MessageBox.Show("You've gone bust.", "You lose!");
                 }
-                else if (dealerFullHand.HandValue() > 21 && playerHand.HandValue() <= 21)
+                else if (HandValue(dealerFullHand) > 21 && HandValue(playerHand) <= 21)
                 {
                     PlaySound(Sound.Win);
                     MessageBox.Show("Dealer goes bust. You Win!", "Congratulations!");
                 }
-                else if (dealerFullHand.HandValue() == 21)
+                else if (HandValue(dealerFullHand) == 21)
                 {
                     PlaySound(Sound.Lose);
                     MessageBox.Show("Dealer has Blackjack.", "You lose!");
                 }
-                else if (dealerFullHand.HandValue() == playerHand.HandValue())
+                else if (HandValue(dealerFullHand) == HandValue(playerHand))
                 {
                     PlaySound(Sound.Lose);
                     MessageBox.Show("Dealer wins ties.", "You lose!");
                 }
-                else if (dealerFullHand.HandValue() >= playerHand.HandValue())
+                else if (HandValue(dealerFullHand) >= HandValue(playerHand))
                 {
                     PlaySound(Sound.Lose);
                     MessageBox.Show("Dealer has higher.", "You lose!");
                 }
-                else if (dealerFullHand.HandValue() < playerHand.HandValue())
+                else if (HandValue(dealerFullHand) < HandValue(playerHand))
                 {
                     PlaySound(Sound.Win);
                     MessageBox.Show("Dealer has lower. You win!", "Congratulations!");
@@ -359,7 +363,7 @@ namespace BlackjackGame
 
                 ChangeButtonState(true);
 
-                if (playerHand.HandValue() == 21) EndGame();
+                if (HandValue(playerHand) == 21) EndGame();
             }
             catch (Exception ex)
             {

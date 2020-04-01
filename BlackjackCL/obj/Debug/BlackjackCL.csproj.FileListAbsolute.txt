@@ -2,5 +2,4 @@ C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackja
 C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackjack\BlackjackCL\bin\Debug\BlackjackCL.pdb
 C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackjack\BlackjackCL\obj\Debug\BlackjackCL.dll
 C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackjack\BlackjackCL\obj\Debug\BlackjackCL.pdb
-C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackjack\BlackjackCL\bin\Debug\BlackjackCL.dll.CodeAnalysisLog.xml
-C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackjack\BlackjackCL\bin\Debug\BlackjackCL.dll.lastcodeanalysissucceeded
+C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackjack\BlackjackCL\obj\Debug\BlackjackCL.csprojAssemblyReference.cache

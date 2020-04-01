@@ -18,4 +18,3 @@ C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackja
 C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackjack\BlackjackGame\bin\Debug\audio\LoseSound.wav
 C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackjack\BlackjackGame\bin\Debug\audio\WinSound.wav
 C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackjack\BlackjackGame\obj\Debug\BlackjackGame_Content.g.cs
-C:\Users\Alex Richard\Nextcloud\School\OOP\Projects\Assignment\Card Game\Blackjack\BlackjackGame\bin\Debug\audio\Prompt.wav
