@@ -340,13 +340,11 @@ namespace BlackjackGame
                 worker.DoWork += (s, e2) =>
                 {
                     DealPlayerCard();
+                    if (HandValue(playerHand) == 21) EndGame(); 
                 };
 
                 worker.RunWorkerAsync();
-
                 ChangeButtonState(true);
-
-                if (HandValue(playerHand) == 21) EndGame();
             }
             catch (Exception ex)
             {
