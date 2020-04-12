@@ -130,37 +130,23 @@ namespace BlackjackGame
                 FaceValue faceValue = pCard.FaceValue;
                 int cardValue = (int)faceValue + 1;
 
-                /* If there is only one Ace left then it would be the last card 
-                 * in the hand to be calculated. So if it would be 21 or under
-                 * when it's valued at 11 then it should be worth 11. If 11
-                 * would push the player over 21 value the Ace at 1. If there 
-                 * are not still Aces and 11 would put the player at 21 then
-                 * it's worth 21. Otherwise if there are still aces and 11 
-                 * would put the player at 21 value it at 1 because otherwise
-                 * the player would be pushed over 21 with the next card.
+                /* If there is more then one ace left or 11 would put over 21
+                 * set the ace value to 1. If the ace wouldn't put it over 21
+                 * and is the last ace, and thus last card, in the hand put the 
+                 * ace valued at 11.
                 */
+
                 if (faceValue == FaceValue.Ace)
                 {
                     numAces--; //subtract one of the number of aces left to calculate
 
-                    if (handValue + 11 == 21) //If 11 would make 21
+                    if(numAces != 0 || handValue + 11 > 21)
                     {
-                        if (numAces != 0) //and there are still cards
-                        {
-                            handValue += 1;
-                        }
-                        else
-                        {
-                            handValue += 11;
-                        }
-                    }
-                    else if (handValue + 11 < 21) //if 11 would still make the hand value less then 21
-                    {
-                        handValue += 11;
+                        handValue += 1;
                     }
                     else
                     {
-                        handValue += 1;
+                        handValue += 11;
                     }
                 }
                 else if (faceValue == FaceValue.Jack || faceValue == FaceValue.Queen || faceValue == FaceValue.King)

@@ -222,11 +222,27 @@ namespace BlackjackGame
                 }
                 else
                 {
-                    //Displays all the cards including the hole card
-                    for (int i = 0; i < dealerFullHand.Count; i++)
+                    //Determines if the hole should be revealed or not
+                    if (!isHoleRevealed)
                     {
-                        Image img = GenerateImage(dealerFullHand[i], i != 0);
-                        pnlDealerCards.Children.Add(img);
+                        //Display all of the cards except the hole card
+                        for (int i = 0; i < dealerHand.Count; i++)
+                        {
+                            Image img = GenerateImage(dealerHand[i], i != 0);
+                            pnlDealerCards.Children.Add(img);
+                        }
+
+                        Image back = GenerateImage(true);
+                        pnlDealerCards.Children.Add(back);
+                    }
+                    else
+                    {
+                        //Displays all the cards including the hole card
+                        for (int i = 0; i < dealerFullHand.Count; i++)
+                        {
+                            Image img = GenerateImage(dealerFullHand[i], i != 0);
+                            pnlDealerCards.Children.Add(img);
+                        }
                     }
                 }
 
